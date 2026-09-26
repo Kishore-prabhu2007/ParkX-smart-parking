@@ -1,0 +1,1 @@
+insert into public.parking_slots(slot_number,floor,section,status) select chr((65+floor((n-1)/10))::int)||lpad(((n-1)%10+1)::text,2,'0'),ceil(n/10.0)::int,'Main',case when n in (9,20) then 'maintenance' else 'available' end from generate_series(1,30) n on conflict(slot_number) do nothing;

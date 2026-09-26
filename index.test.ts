@@ -1,0 +1,2 @@
+import { describe, expect, it } from 'vitest'; import { reservationSchema, vehicleNumber } from './index';
+describe('validation',()=>{it('accepts Indian vehicle numbers',()=>expect(vehicleNumber.safeParse('TN01AB1234').success).toBe(true));it('rejects invalid reservation ranges',()=>expect(reservationSchema.safeParse({vehicleNumber:'TN01AB1234',startTime:'2020-01-02T10:00',endTime:'2020-01-02T09:00'}).success).toBe(false))});

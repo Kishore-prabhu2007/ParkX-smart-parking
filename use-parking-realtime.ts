@@ -1,0 +1,2 @@
+'use client'; import { useEffect } from 'react'; import { createClient } from '@/lib/supabase/client';
+export function useParkingRealtime(refresh:()=>void){useEffect(()=>{const s=createClient();const c=s.channel('parking-live').on('postgres_changes',{event:'*',schema:'public',table:'parking_slots'},refresh).on('postgres_changes',{event:'*',schema:'public',table:'reservations'},refresh).subscribe(status=>{if(status==='CHANNEL_ERROR') console.warn('Realtime connection failed')});return()=>{s.removeChannel(c)}},[refresh])}

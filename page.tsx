@@ -1,0 +1,1 @@
+import {AuthForm} from '@/components/AuthForm'; import Link from 'next/link'; export default function Register(){return <><AuthForm register/><p className="text-center text-sm">Already registered? <Link className="text-blue-600" href="/login">Sign in</Link></p></>}
